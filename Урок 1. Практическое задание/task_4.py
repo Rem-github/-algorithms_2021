@@ -25,3 +25,51 @@
 
 Задание творческое. Здесь нет жестких требований к выполнению.
 """
+
+user_db = {
+    'Вася' : ['pass1', True],
+    'Петя' : ['pass2', True],
+    'Коля' : ['pass3', False]
+}
+
+# в первом варианте сложность линейная
+
+def check(user_db,name,pas):
+    check_result = ''                                           # O(1)
+    for key, value in user_db.items():                          # O(n)
+        if key == name:                                         # O(1)
+            if value[1] == True:                                # O(1)
+                if value[0] == pas:                             # O(1)
+                    check_result = 'Авторизация успешна'        # O(1)
+                else:
+                    check_result = 'Не верный пароль'           # O(1)
+            else:
+                check_result = 'Необходимо пройти активацию'    # O(1)
+            break
+        else:
+            check_result = 'Пользователь не зарегистрирован'    # O(1)
+    return check_result                                         # O(1)
+
+# в этом варианте сложность константа, хотя для меня загадка, каким образом работает функция get,
+# что она считается константой. Но этот вариант, в таком случае, гораздо лучше.
+
+def check1(user_db,name,pas):
+    check_result = ''                                           # O(1)
+    if user_db.get(name):                                       # O(1)
+        data = user_db.get(name)                                # O(1)
+        if data[1] == True:                                     # O(1)
+            if data[0] == pas:                                  # O(1)
+                check_result = 'Авторизация успешна'            # O(1)
+            else:
+                check_result = 'Не верный пароль'               # O(1)
+        else:
+            check_result = 'Необходимо пройти активацию'        # O(1)
+    else:
+        check_result = 'Пользователь не зарегистрирован'        # O(1)
+    return check_result                                         # O(1)
+
+
+
+print(check1(user_db,'Петя','pass2'))
+print(check1(user_db,'Маша','pass2'))
+print(check1(user_db,'Коля','pass3'))
