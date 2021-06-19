@@ -18,3 +18,27 @@
 
 ф-ции min() и sort() не исп-ем!
 """
+
+# Сложность такого алгоритма: O(n^2) - квадратичная.
+def min_number(user_list):
+    n = 0                                   # O(1)
+    min = user_list[0]                      # O(1)
+    for k in range(len(user_list)):         # O(n)
+        for j in range(len(user_list)):     # O(n)
+            if user_list[k] < user_list[j]: # O(1)
+                n = user_list[k]            # O(1)
+        if min > n:                         # O(1)
+            min = n                         # O(1)
+    return min                              # O(1)
+
+# Сложность такого алгоритма: O(n) - линейная.
+def min_number_line(user_list):
+    min = user_list[0]                      # O(1)
+    for k in user_list:                     # O(n)
+        if k < min:                         # O(1)
+            min = k                         # O(1)
+    return min                              # O(1)
+
+print(min_number([-3,1,2,3,4,88,5,6,7,0,8]))
+print(min_number_line([1,2,3,4,88,5,6,7,0,8,-5]))
+
