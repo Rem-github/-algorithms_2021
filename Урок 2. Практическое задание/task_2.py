@@ -18,3 +18,14 @@
 Решите через рекурсию. Решение через цикл не принимается.
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 """
+
+def char_calc(number, even_numbers=0, odd_numbers=0):
+    if number <= 0:
+        return print(f'Четных чисел: {even_numbers} нечетных: {odd_numbers}')
+    if number % 2 == 0:
+        even_numbers += 1
+    else:
+        odd_numbers += 1
+    return char_calc(number // 10, even_numbers, odd_numbers)
+
+char_calc(2223388)

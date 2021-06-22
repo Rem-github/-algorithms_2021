@@ -28,3 +28,28 @@
 Решите через рекурсию. Решение через цикл не принимается.
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 """
+def operation():
+    res = 0
+    sign = ''
+    en = False
+    while(en == False):
+        try:
+            a = int(input("Введите первое целое число: "))    # пусть числа будут целыми
+            b = int(input("Введите второе целое число: "))
+            en = True
+        except ValueError: print('Ввод не корректен')
+    while sign not in ['0', '+', '-', '*', '/']:
+        sign = input("Введите знак операции: ")
+    if sign == '0':
+        return
+    else:
+        try:
+            if sign =='+': res = a + b
+            elif sign =='-': res = a - b
+            elif sign == '*': res = a * b
+            else: res = a / b
+            print(f'Результат операции: {res}')
+        except ZeroDivisionError: print('На 0 делить нельзя')
+        return operation()
+
+operation()
