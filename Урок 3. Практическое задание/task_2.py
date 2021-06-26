@@ -18,3 +18,27 @@
 Обязательно усложните задачу! Добавьте сохранение хеша в файле и получение его из файла.
 А если вы знаете как через Python работать с БД, привяжите к заданию БД и сохраняйте хеши там.
 """
+
+import hashlib
+
+def user_pass():
+    passw = input('Введите пароль: ')
+    hash_obj = hashlib.sha256(passw.encode()+salt.encode())
+    res = hash_obj.hexdigest()
+    return res
+
+
+salt = 'salt'
+
+base_pass = user_pass()
+print(base_pass)
+with open('pass.txt', 'w', encoding='utf-8') as fl:
+    fl.write(base_pass)
+
+try_pass = user_pass()
+with open('pass.txt', 'r', encoding='utf-8') as fl:
+    content = fl.read()
+if base_pass == content:
+    print('Пароль верный')
+else:
+    print('Пароль не верный')

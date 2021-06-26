@@ -11,3 +11,20 @@
 
 Задание творческое. Здесь нет жестких требований к выполнению.
 """
+import hashlib
+
+def url_check(user_url):
+    res = hashlib.sha256(user_url.encode() + salt.encode()).hexdigest()
+    if res in user_cache.values():
+        print('URL уже есть в кэше')
+    else:
+        user_cache[user_url] = res
+        print(f'URL {user_url} добавлен в кэш')
+
+user_cache = {}
+salt = 'salt'
+
+url_check('www.yandex.ru')
+url_check('www.yandex.ru')
+url_check('www.mail.ru')
+print(user_cache)

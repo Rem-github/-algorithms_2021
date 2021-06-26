@@ -16,3 +16,13 @@
 р
 а
 """
+
+import hashlib
+
+hash_set = set()
+user_str = 'papa'
+for i in range(len(user_str)):
+    for j in range(i+1, len(user_str)+1):
+        if user_str[i:j] != user_str:
+            hash_set.add(hashlib.sha256(user_str[i:j].encode()).hexdigest())
+print(f'Количество подстрок равно: {len(hash_set)}')
