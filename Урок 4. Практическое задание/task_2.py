@@ -30,17 +30,17 @@ print(
     timeit(
         "recursive_reverse(num_100)",
         setup='from __main__ import recursive_reverse, num_100',
-        number=10000))
+        number=1))
 print(
     timeit(
         "recursive_reverse(num_1000)",
         setup='from __main__ import recursive_reverse, num_1000',
-        number=10000))
+        number=1))
 print(
     timeit(
         "recursive_reverse(num_10000)",
         setup='from __main__ import recursive_reverse, num_10000',
-        number=10000))
+        number=1))
 
 
 def memoize(f):
@@ -68,14 +68,20 @@ print(
     timeit(
         'recursive_reverse_mem(num_100)',
         setup='from __main__ import recursive_reverse_mem, num_100',
-        number=10000))
+        number=1))
 print(
     timeit(
         'recursive_reverse_mem(num_1000)',
         setup='from __main__ import recursive_reverse_mem, num_1000',
-        number=10000))
+        number=1))
 print(
     timeit(
         'recursive_reverse_mem(num_10000)',
         setup='from __main__ import recursive_reverse_mem, num_10000',
-        number=10000))
+        number=1))
+
+"""
+В данном случае мемоизацию делать не имеет значения, т.к. для заполнения кэша мы все равно
+должны перебрать все символы. Т.е. при единичном выполнении кода, цифры скорости будут равными.
+Кэш будет ускорять процесс при повторных прохождениях timeit. Если задаем всего одно прохождение, видим равные цифры
+"""

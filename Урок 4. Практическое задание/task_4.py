@@ -11,6 +11,8 @@
 
 Без аналитики задание считается не принятым!
 """
+from collections import Counter
+from timeit import timeit
 
 array = [1, 3, 1, 3, 4, 5, 1]
 
@@ -39,5 +41,22 @@ def func_2():
            f'оно появилось в массиве {max_2} раз(а)'
 
 
-print(func_1())
-print(func_2())
+def func_3():
+    el = Counter(array).most_common(1)[0]
+    return f'Чаще всего встречается число {el[0]}, ' \
+           f'оно появилось в массиве {el[1]} раз(а)'
+
+
+def func_4():
+    for number, count in Counter(array).items():
+        if count > 1:
+            return f'Число {number} повторяется {count} раза'
+
+
+print(timeit("func_1()", globals=globals()))
+print(timeit("func_2()", globals=globals()))
+print(timeit("func_3()", globals=globals()))
+print(timeit("func_4()", globals=globals()))
+print(timeit("func_4()", globals=globals()))
+
+# Сделал 2 варианта через Counter, но это оказалось не самым быстрым решением, хотя код короче
