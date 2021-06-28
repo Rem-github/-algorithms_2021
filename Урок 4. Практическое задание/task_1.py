@@ -36,3 +36,5 @@ print(timeit("func_2([1,2,3,4,5,6,7,8,9])", globals=globals()))
 print(func_2([1, 2, 3, 4, 5, 6, 7, 8, 9]))
 print(timeit("func_3([1,2,3,4,5,6,7,8,9])", globals=globals()))
 print(func_3([1, 2, 3, 4, 5, 6, 7, 8, 9]))
+
+# почему-то у меня не получилось ускорить процесс с помощью lc и enumerate
