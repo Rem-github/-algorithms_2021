@@ -34,3 +34,19 @@ hx = HexNumber
 hx + hx
 hex()
 """
+from collections import defaultdict
+
+user_dict = defaultdict(list)
+
+# for i in range(2):
+#    numb = input('Введите число в шестнадцатеричном формате: ')
+#    user_dict[numb] = list(numb)
+user_dict['A2'] = ['A', '2']
+user_dict['C4F'] = ['C', '4', 'F']
+target_sum = 0
+target_mul = 1
+for i in user_dict.values():
+    target_sum += int(''.join(i), 16)
+    target_mul *= int(''.join(i), 16)
+print(hex(target_sum))
+print(hex(target_mul))
