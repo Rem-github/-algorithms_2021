@@ -36,3 +36,27 @@ for i in
 
 
 """
+from statistics import median
+from random import randint
+
+
+def shell(seq):     # сортировка методом Шелла
+    inc = len(seq) // 2
+    while inc:
+        for i, el in enumerate(seq):
+            while i >= inc and seq[i - inc] > el:
+                seq[i] = seq[i - inc]
+                i -= inc
+            seq[i] = el
+        inc = 1 if inc == 2 else int(inc * 5.0 / 11)
+    return seq
+
+
+m = int(input('Введите m: '))
+orig_list = [randint(-100, 100) for _ in range(2*m+1)]
+print(orig_list)
+new_list = shell(orig_list)
+print(new_list)
+print(f'Медиана равна: {new_list[m]}')
+print(f'Проверка через median: {median(new_list)}')
+
